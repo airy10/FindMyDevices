@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		490532CD2B73CF6400C8FE09 /* FindMyDevicesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532CC2B73CF6400C8FE09 /* FindMyDevicesApp.swift */; };
+		490532CF2B73CF6400C8FE09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532CE2B73CF6400C8FE09 /* ContentView.swift */; };
+		490532D12B73CF6500C8FE09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490532D02B73CF6500C8FE09 /* Assets.xcassets */; };
+		490532D42B73CF6500C8FE09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490532D32B73CF6500C8FE09 /* Preview Assets.xcassets */; };
+		490532DF2B73CF6500C8FE09 /* FindMyDevicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532DE2B73CF6500C8FE09 /* FindMyDevicesTests.swift */; };
+		490532E92B73CF6500C8FE09 /* FindMyDevicesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532E82B73CF6500C8FE09 /* FindMyDevicesUITests.swift */; };
+		490532EB2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		490532DB2B73CF6500C8FE09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 490532C12B73CF6400C8FE09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 490532C82B73CF6400C8FE09;
+			remoteInfo = FindMyDevices;
+		};
+		490532E52B73CF6500C8FE09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 490532C12B73CF6400C8FE09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 490532C82B73CF6400C8FE09;
+			remoteInfo = FindMyDevices;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		490532C92B73CF6400C8FE09 /* FindMyDevices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMyDevices.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		490532CC2B73CF6400C8FE09 /* FindMyDevicesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesApp.swift; sourceTree = "<group>"; };
+		490532CE2B73CF6400C8FE09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		490532D02B73CF6500C8FE09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		490532D32B73CF6500C8FE09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		490532D52B73CF6500C8FE09 /* FindMyDevices.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindMyDevices.entitlements; sourceTree = "<group>"; };
+		490532DA2B73CF6500C8FE09 /* FindMyDevicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyDevicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		490532DE2B73CF6500C8FE09 /* FindMyDevicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesTests.swift; sourceTree = "<group>"; };
+		490532E42B73CF6500C8FE09 /* FindMyDevicesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyDevicesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		490532E82B73CF6500C8FE09 /* FindMyDevicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesUITests.swift; sourceTree = "<group>"; };
+		490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		490532C62B73CF6400C8FE09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		490532D72B73CF6500C8FE09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		490532E12B73CF6500C8FE09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		490532C02B73CF6400C8FE09 = {
+			isa = PBXGroup;
+			children = (
+				490532CB2B73CF6400C8FE09 /* FindMyDevices */,
+				490532DD2B73CF6500C8FE09 /* FindMyDevicesTests */,
+				490532E72B73CF6500C8FE09 /* FindMyDevicesUITests */,
+				490532CA2B73CF6400C8FE09 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		490532CA2B73CF6400C8FE09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				490532C92B73CF6400C8FE09 /* FindMyDevices.app */,
+				490532DA2B73CF6500C8FE09 /* FindMyDevicesTests.xctest */,
+				490532E42B73CF6500C8FE09 /* FindMyDevicesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		490532CB2B73CF6400C8FE09 /* FindMyDevices */ = {
+			isa = PBXGroup;
+			children = (
+				490532CC2B73CF6400C8FE09 /* FindMyDevicesApp.swift */,
+				490532CE2B73CF6400C8FE09 /* ContentView.swift */,
+				490532D02B73CF6500C8FE09 /* Assets.xcassets */,
+				490532D52B73CF6500C8FE09 /* FindMyDevices.entitlements */,
+				490532D22B73CF6500C8FE09 /* Preview Content */,
+			);
+			path = FindMyDevices;
+			sourceTree = "<group>";
+		};
+		490532D22B73CF6500C8FE09 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				490532D32B73CF6500C8FE09 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		490532DD2B73CF6500C8FE09 /* FindMyDevicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				490532DE2B73CF6500C8FE09 /* FindMyDevicesTests.swift */,
+			);
+			path = FindMyDevicesTests;
+			sourceTree = "<group>";
+		};
+		490532E72B73CF6500C8FE09 /* FindMyDevicesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				490532E82B73CF6500C8FE09 /* FindMyDevicesUITests.swift */,
+				490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */,
+			);
+			path = FindMyDevicesUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		490532C82B73CF6400C8FE09 /* FindMyDevices */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 490532EE2B73CF6600C8FE09 /* Build configuration list for PBXNativeTarget "FindMyDevices" */;
+			buildPhases = (
+				490532C52B73CF6400C8FE09 /* Sources */,
+				490532C62B73CF6400C8FE09 /* Frameworks */,
+				490532C72B73CF6400C8FE09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindMyDevices;
+			productName = FindMyDevices;
+			productReference = 490532C92B73CF6400C8FE09 /* FindMyDevices.app */;
+			productType = "com.apple.product-type.application";
+		};
+		490532D92B73CF6500C8FE09 /* FindMyDevicesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 490532F12B73CF6600C8FE09 /* Build configuration list for PBXNativeTarget "FindMyDevicesTests" */;
+			buildPhases = (
+				490532D62B73CF6500C8FE09 /* Sources */,
+				490532D72B73CF6500C8FE09 /* Frameworks */,
+				490532D82B73CF6500C8FE09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				490532DC2B73CF6500C8FE09 /* PBXTargetDependency */,
+			);
+			name = FindMyDevicesTests;
+			productName = FindMyDevicesTests;
+			productReference = 490532DA2B73CF6500C8FE09 /* FindMyDevicesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		490532E32B73CF6500C8FE09 /* FindMyDevicesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 490532F42B73CF6600C8FE09 /* Build configuration list for PBXNativeTarget "FindMyDevicesUITests" */;
+			buildPhases = (
+				490532E02B73CF6500C8FE09 /* Sources */,
+				490532E12B73CF6500C8FE09 /* Frameworks */,
+				490532E22B73CF6500C8FE09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				490532E62B73CF6500C8FE09 /* PBXTargetDependency */,
+			);
+			name = FindMyDevicesUITests;
+			productName = FindMyDevicesUITests;
+			productReference = 490532E42B73CF6500C8FE09 /* FindMyDevicesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		490532C12B73CF6400C8FE09 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					490532C82B73CF6400C8FE09 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					490532D92B73CF6500C8FE09 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 490532C82B73CF6400C8FE09;
+					};
+					490532E32B73CF6500C8FE09 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 490532C82B73CF6400C8FE09;
+					};
+				};
+			};
+			buildConfigurationList = 490532C42B73CF6400C8FE09 /* Build configuration list for PBXProject "FindMyDevices" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 490532C02B73CF6400C8FE09;
+			productRefGroup = 490532CA2B73CF6400C8FE09 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				490532C82B73CF6400C8FE09 /* FindMyDevices */,
+				490532D92B73CF6500C8FE09 /* FindMyDevicesTests */,
+				490532E32B73CF6500C8FE09 /* FindMyDevicesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		490532C72B73CF6400C8FE09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				490532D42B73CF6500C8FE09 /* Preview Assets.xcassets in Resources */,
+				490532D12B73CF6500C8FE09 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		490532D82B73CF6500C8FE09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		490532E22B73CF6500C8FE09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		490532C52B73CF6400C8FE09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				490532CF2B73CF6400C8FE09 /* ContentView.swift in Sources */,
+				490532CD2B73CF6400C8FE09 /* FindMyDevicesApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		490532D62B73CF6500C8FE09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				490532DF2B73CF6500C8FE09 /* FindMyDevicesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		490532E02B73CF6500C8FE09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				490532E92B73CF6500C8FE09 /* FindMyDevicesUITests.swift in Sources */,
+				490532EB2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		490532DC2B73CF6500C8FE09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 490532C82B73CF6400C8FE09 /* FindMyDevices */;
+			targetProxy = 490532DB2B73CF6500C8FE09 /* PBXContainerItemProxy */;
+		};
+		490532E62B73CF6500C8FE09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 490532C82B73CF6400C8FE09 /* FindMyDevices */;
+			targetProxy = 490532E52B73CF6500C8FE09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		490532EC2B73CF6600C8FE09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		490532ED2B73CF6600C8FE09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		490532EF2B73CF6600C8FE09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FindMyDevices/FindMyDevices.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FindMyDevices/Preview Content\"";
+				DEVELOPMENT_TEAM = 99H6DS88Y6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airy.FindMyDevices;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		490532F02B73CF6600C8FE09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FindMyDevices/FindMyDevices.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FindMyDevices/Preview Content\"";
+				DEVELOPMENT_TEAM = 99H6DS88Y6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airy.FindMyDevices;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		490532F22B73CF6600C8FE09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99H6DS88Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airy.FindMyDevicesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindMyDevices.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FindMyDevices";
+			};
+			name = Debug;
+		};
+		490532F32B73CF6600C8FE09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99H6DS88Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airy.FindMyDevicesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindMyDevices.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FindMyDevices";
+			};
+			name = Release;
+		};
+		490532F52B73CF6600C8FE09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99H6DS88Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airy.FindMyDevicesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = FindMyDevices;
+			};
+			name = Debug;
+		};
+		490532F62B73CF6600C8FE09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99H6DS88Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airy.FindMyDevicesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = FindMyDevices;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		490532C42B73CF6400C8FE09 /* Build configuration list for PBXProject "FindMyDevices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				490532EC2B73CF6600C8FE09 /* Debug */,
+				490532ED2B73CF6600C8FE09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		490532EE2B73CF6600C8FE09 /* Build configuration list for PBXNativeTarget "FindMyDevices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				490532EF2B73CF6600C8FE09 /* Debug */,
+				490532F02B73CF6600C8FE09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		490532F12B73CF6600C8FE09 /* Build configuration list for PBXNativeTarget "FindMyDevicesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				490532F22B73CF6600C8FE09 /* Debug */,
+				490532F32B73CF6600C8FE09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		490532F42B73CF6600C8FE09 /* Build configuration list for PBXNativeTarget "FindMyDevicesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				490532F52B73CF6600C8FE09 /* Debug */,
+				490532F62B73CF6600C8FE09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 490532C12B73CF6400C8FE09 /* Project object */;
+}
