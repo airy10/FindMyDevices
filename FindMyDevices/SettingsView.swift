@@ -22,8 +22,8 @@ struct SettingsView: View {
                 .tag(Tabs.general)
             HomeAssistantSettingsView()
                 .tabItem {
-                    Label("Home Assistant", systemImage: "homekit")
-                }
+                    Label("Home Assistant", image: "HALogo")
+                    }
                 .tag(Tabs.homeassistant)
         }
         .padding(20)

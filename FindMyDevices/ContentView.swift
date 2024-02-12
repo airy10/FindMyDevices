@@ -120,7 +120,7 @@ struct ContentView: View {
             .frame(minWidth: 200)
             Map(interactionModes: .all) {
                 ForEach(devicesManager.devices) { device in
-                    if let _ = device.latitude, let _ = device.longitude, device != selection {
+                    if let _ = device.latitude, let _ = device.longitude {
                         DeviceMarker(device: device)
                             .tint(device == selection ? .red : .blue)
                     }
