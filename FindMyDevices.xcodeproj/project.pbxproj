@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4902865F2B76691000FF191E /* DeviceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902865E2B76691000FF191E /* DeviceDetails.swift */; };
 		490532CD2B73CF6400C8FE09 /* FindMyDevicesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532CC2B73CF6400C8FE09 /* FindMyDevicesApp.swift */; };
 		490532CF2B73CF6400C8FE09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532CE2B73CF6400C8FE09 /* ContentView.swift */; };
 		490532D12B73CF6500C8FE09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490532D02B73CF6500C8FE09 /* Assets.xcassets */; };
@@ -14,6 +15,14 @@
 		490532DF2B73CF6500C8FE09 /* FindMyDevicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532DE2B73CF6500C8FE09 /* FindMyDevicesTests.swift */; };
 		490532E92B73CF6500C8FE09 /* FindMyDevicesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532E82B73CF6500C8FE09 /* FindMyDevicesUITests.swift */; };
 		490532EB2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */; };
+		490532F82B73CF8400C8FE09 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532F72B73CF8400C8FE09 /* Device.swift */; };
+		490532FA2B73D62300C8FE09 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532F92B73D62300C8FE09 /* DevicesManager.swift */; };
+		49C8056A2B77F22300552267 /* MQTTNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 49C805692B77F22300552267 /* MQTTNIO */; };
+		49C8056C2B78E6F300552267 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056B2B78E6F300552267 /* SettingsView.swift */; };
+		49C8056E2B78E72C00552267 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */; };
+		49C805702B78E74D00552267 /* HomeAssistantSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */; };
+		49FCF16B2B74F9EB00B78D76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCF16A2B74F9EB00B78D76 /* Extensions.swift */; };
+		49FCF16D2B7514DE00B78D76 /* DirectoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCF16C2B7514DE00B78D76 /* DirectoryMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,17 +43,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4902865E2B76691000FF191E /* DeviceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetails.swift; sourceTree = "<group>"; };
 		490532C92B73CF6400C8FE09 /* FindMyDevices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMyDevices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		490532CC2B73CF6400C8FE09 /* FindMyDevicesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesApp.swift; sourceTree = "<group>"; };
 		490532CE2B73CF6400C8FE09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		490532D02B73CF6500C8FE09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		490532D32B73CF6500C8FE09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		490532D52B73CF6500C8FE09 /* FindMyDevices.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindMyDevices.entitlements; sourceTree = "<group>"; };
 		490532DA2B73CF6500C8FE09 /* FindMyDevicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyDevicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		490532DE2B73CF6500C8FE09 /* FindMyDevicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesTests.swift; sourceTree = "<group>"; };
 		490532E42B73CF6500C8FE09 /* FindMyDevicesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyDevicesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		490532E82B73CF6500C8FE09 /* FindMyDevicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesUITests.swift; sourceTree = "<group>"; };
 		490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyDevicesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		490532F72B73CF8400C8FE09 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		490532F92B73D62300C8FE09 /* DevicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesManager.swift; sourceTree = "<group>"; };
+		49C805672B77E02C00552267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		49C8056B2B78E6F300552267 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssistantSettingsView.swift; sourceTree = "<group>"; };
+		49FCF16A2B74F9EB00B78D76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		49FCF16C2B7514DE00B78D76 /* DirectoryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C8056A2B77F22300552267 /* MQTTNIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,11 +113,19 @@
 		490532CB2B73CF6400C8FE09 /* FindMyDevices */ = {
 			isa = PBXGroup;
 			children = (
+				49C805672B77E02C00552267 /* Info.plist */,
 				490532CC2B73CF6400C8FE09 /* FindMyDevicesApp.swift */,
 				490532CE2B73CF6400C8FE09 /* ContentView.swift */,
+				490532F72B73CF8400C8FE09 /* Device.swift */,
+				490532F92B73D62300C8FE09 /* DevicesManager.swift */,
+				49FCF16A2B74F9EB00B78D76 /* Extensions.swift */,
 				490532D02B73CF6500C8FE09 /* Assets.xcassets */,
-				490532D52B73CF6500C8FE09 /* FindMyDevices.entitlements */,
 				490532D22B73CF6500C8FE09 /* Preview Content */,
+				49FCF16C2B7514DE00B78D76 /* DirectoryMonitor.swift */,
+				4902865E2B76691000FF191E /* DeviceDetails.swift */,
+				49C8056B2B78E6F300552267 /* SettingsView.swift */,
+				49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */,
+				49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */,
 			);
 			path = FindMyDevices;
 			sourceTree = "<group>";
@@ -145,6 +171,9 @@
 			dependencies = (
 			);
 			name = FindMyDevices;
+			packageProductDependencies = (
+				49C805692B77F22300552267 /* MQTTNIO */,
+			);
 			productName = FindMyDevices;
 			productReference = 490532C92B73CF6400C8FE09 /* FindMyDevices.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +246,9 @@
 				Base,
 			);
 			mainGroup = 490532C02B73CF6400C8FE09;
+			packageReferences = (
+				49C805682B77F22300552267 /* XCRemoteSwiftPackageReference "mqtt-nio" */,
+			);
 			productRefGroup = 490532CA2B73CF6400C8FE09 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +291,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FCF16B2B74F9EB00B78D76 /* Extensions.swift in Sources */,
+				49C8056C2B78E6F300552267 /* SettingsView.swift in Sources */,
+				49C8056E2B78E72C00552267 /* GeneralSettingsView.swift in Sources */,
+				490532F82B73CF8400C8FE09 /* Device.swift in Sources */,
+				490532FA2B73D62300C8FE09 /* DevicesManager.swift in Sources */,
 				490532CF2B73CF6400C8FE09 /* ContentView.swift in Sources */,
+				49FCF16D2B7514DE00B78D76 /* DirectoryMonitor.swift in Sources */,
 				490532CD2B73CF6400C8FE09 /* FindMyDevicesApp.swift in Sources */,
+				49C805702B78E74D00552267 /* HomeAssistantSettingsView.swift in Sources */,
+				4902865F2B76691000FF191E /* DeviceDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FindMyDevices/FindMyDevices.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -429,6 +470,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FindMyDevices/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FindMyDevices;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FindMyDevices/FindMyDevices.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -456,6 +501,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FindMyDevices/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FindMyDevices;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -581,6 +629,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49C805682B77F22300552267 /* XCRemoteSwiftPackageReference "mqtt-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-server-community/mqtt-nio";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49C805692B77F22300552267 /* MQTTNIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49C805682B77F22300552267 /* XCRemoteSwiftPackageReference "mqtt-nio" */;
+			productName = MQTTNIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 490532C12B73CF6400C8FE09 /* Project object */;
 }

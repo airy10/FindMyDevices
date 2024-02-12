@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import Foundation
 
 @main
 struct FindMyDevicesApp: App {
+
+    let devicesManager = DevicesManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(devicesManager: devicesManager)
+        }
+        Settings {
+            SettingsView()
         }
     }
 }
