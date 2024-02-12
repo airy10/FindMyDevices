@@ -17,7 +17,6 @@
 		490532EB2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */; };
 		490532F82B73CF8400C8FE09 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532F72B73CF8400C8FE09 /* Device.swift */; };
 		490532FA2B73D62300C8FE09 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532F92B73D62300C8FE09 /* DevicesManager.swift */; };
-		49C8056A2B77F22300552267 /* MQTTNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 49C805692B77F22300552267 /* MQTTNIO */; };
 		49C8056C2B78E6F300552267 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056B2B78E6F300552267 /* SettingsView.swift */; };
 		49C8056E2B78E72C00552267 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */; };
 		49C805702B78E74D00552267 /* HomeAssistantSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */; };
@@ -69,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49C8056A2B77F22300552267 /* MQTTNIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +170,6 @@
 			);
 			name = FindMyDevices;
 			packageProductDependencies = (
-				49C805692B77F22300552267 /* MQTTNIO */,
 			);
 			productName = FindMyDevices;
 			productReference = 490532C92B73CF6400C8FE09 /* FindMyDevices.app */;
@@ -247,7 +244,6 @@
 			);
 			mainGroup = 490532C02B73CF6400C8FE09;
 			packageReferences = (
-				49C805682B77F22300552267 /* XCRemoteSwiftPackageReference "mqtt-nio" */,
 			);
 			productRefGroup = 490532CA2B73CF6400C8FE09 /* Products */;
 			projectDirPath = "";
@@ -629,25 +625,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		49C805682B77F22300552267 /* XCRemoteSwiftPackageReference "mqtt-nio" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-server-community/mqtt-nio";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.11.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		49C805692B77F22300552267 /* MQTTNIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C805682B77F22300552267 /* XCRemoteSwiftPackageReference "mqtt-nio" */;
-			productName = MQTTNIO;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 490532C12B73CF6400C8FE09 /* Project object */;
 }

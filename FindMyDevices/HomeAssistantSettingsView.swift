@@ -18,7 +18,7 @@ struct HomeAssistantSettingsView: View {
             Toggle("Enabled", isOn: $trackerEnabled)
             TextField("http://homeassistant.local:8123", text: $endpoint)
             TextField("<access token>", text: $token)
-        }.scaledToFit()
+        }
     }
 }
 

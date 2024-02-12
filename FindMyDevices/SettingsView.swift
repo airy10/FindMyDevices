@@ -19,13 +19,11 @@ struct SettingsView: View {
                 .tabItem {
                     Label("General", systemImage: "gear")
                 }
-                .scaledToFit()
                 .tag(Tabs.general)
             HomeAssistantSettingsView()
                 .tabItem {
                     Label("Home Assistant", systemImage: "homekit")
                 }
-                .scaledToFit()
                 .tag(Tabs.homeassistant)
         }
         .padding(20)

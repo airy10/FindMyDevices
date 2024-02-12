@@ -210,7 +210,7 @@ class DevicesManager : ObservableObject {
             return
         }
 
-        guard let latitude = device.latitude, let longitude = device.longitude else { return }
+        guard let _ = device.latitude, let _ = device.longitude else { return }
         let id = device.identifier.uppercased()
         print("Location changed : \(id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
 

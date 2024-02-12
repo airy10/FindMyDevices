@@ -44,7 +44,6 @@ class Device :  CustomStringConvertible, Hashable, Identifiable, ObservableObjec
     @Published var timestamp: Date? = nil
     @Published var scanDate: Date? = nil
 
-
     @Published var battery: Double? = nil
 
     var label: String {
