@@ -8,15 +8,24 @@
 import Foundation
 import CryptoKit
 import SwiftUI
-
+import MQTTNIO
+import NIOCore
 
 class DevicesManager : ObservableObject {
 
-    @AppStorage("homeassistant_enabled") var ha_enabled: Bool = false
-    @AppStorage("homeassistant_endpoint") var ha_endpoint: String = "http://homeassistant.local:8123"
-    @AppStorage("homeassistant_token") var ha_token: String = ""
+    @State
+    var homeassistantSettings = HomeAssistantSettings()
+
+    @State
+    var mqttSettings = MQTTSettings() {
+        didSet {
+            mqttSettingsDidChange()
+        }
+    }
 
     var disableNotification = true
+
+    var mqttClient : MQTTClient? = nil
 
     enum Error: Swift.Error {
         case invalidFileFormat
@@ -61,8 +70,8 @@ class DevicesManager : ObservableObject {
         self.loadDevices()
         disableNotification = false
         for device in devices {
-            print(device)
             if device.timestamp != nil {
+                print("\(device.id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
                 notifyChange(device: device)
             }
         }
@@ -217,23 +226,133 @@ class DevicesManager : ObservableObject {
         notifyChange(device: device)
     }
 
-    func notifyChange(device: Device) {
+    func updateMQTT(device: Device) {
+        if mqttSettings.enabled == false || mqttSettings.server.count == 0 {
+            return
+        }
 
         guard let latitude = device.latitude, let longitude = device.longitude else { return }
         let id = device.identifier.uppercased()
 
-        if ha_enabled == false || ha_endpoint.count == 0 || ha_token.count == 0 {
+        if mqttSettings.server != mqttClient?.host ||
+            mqttSettings.port != mqttClient?.port ||
+            mqttSettings.user != mqttClient?.configuration.userName ||
+            mqttSettings.password != mqttClient?.configuration.password  {
+
+            mqttClient = nil
+        }
+
+        if mqttClient == nil {
+            mqttClient = MQTTClient(
+                host: mqttSettings.server,
+                port: mqttSettings.port,
+                identifier: "FindMyDevices",
+                eventLoopGroupProvider: .createNew,
+                configuration: MQTTClient.Configuration(userName: mqttSettings.user, password: mqttSettings.password)
+            )
+            if let client = mqttClient {
+                let status = client.connect()
+                status
+                    .whenSuccess {_ in
+                        print("Connected")
+                    }
+                status
+                    .whenFailure { error in
+                        print("Error : \(error)")
+                   }
+                do {
+                    _ = try status.wait()
+                }
+                catch {
+                    return
+                }
+                return
+            } else {
+                print("Invalid client")
+            }
+
+        }
+
+        let deviceId = "FMD_" + id
+        let deviceTopic = "homeassistant/device_tracker/" + deviceId + "/"
+
+        let topic = deviceTopic + "config"
+
+        // Create the device (could be done only once - and should be only done if autodiscovery is enabled)
+        var deviceInfo : [String : Any] = [
+            "identifiers": [deviceId],
+            "name": device.label,
+        ]
+
+        if let manufacturerName = device.manufacturerName {
+            deviceInfo["manufacturer"] = manufacturerName
+        }
+        if let version = device.version {
+            deviceInfo["sw_version"] = version
+        }
+        if let model = device.model {
+            deviceInfo["model"] = model
+        } else if let model = device.modelName {
+            deviceInfo["model"] = model
+        }
+
+        let deviceConfig : [String: Any] = [
+            "state_topic": deviceTopic + "state",
+            "json_attributes_topic": deviceTopic + "attributes",
+            "device": deviceInfo,
+            "payload_reset" : "reset",
+            "unique_id": deviceId
+        ]
+        if let deviceConfigData = try? JSONSerialization.data(withJSONObject: deviceConfig, options: .withoutEscapingSlashes) {
+            let _ = mqttClient?.publish(to: topic, payload: ByteBuffer(data: deviceConfigData), qos: .atLeastOnce, retain: true)
+        } else {
+            print("Can't encode message : \(deviceConfig)")
+        }
+
+        var location : [String: Any] = [
+            "longitude": longitude,
+            "latitude": latitude,
+            "provider-url": "https://github.com/airy10/FindMyDevices",
+            "provider": "FindMyDevices",
+            "via_device": "FindMyDevices",
+        ]
+        if let accuracy = device.horizontalAccuracy {
+            location["gps_accuracy"] = accuracy
+        }
+        if let timestamp = device.timestamp {
+            location["last_update"] = timestamp.ISO8601Format()
+            location["last_update_timestamp"] = timestamp.timeIntervalSince1970
+        }
+        if let battery = device.battery {
+            location["battery"] = battery
+        }
+
+        if let locationData = try? JSONSerialization.data(withJSONObject: location, options: .withoutEscapingSlashes) {
+            _ = mqttClient?.publish(to: deviceTopic + "attributes", payload: ByteBuffer(data: locationData), qos: .atLeastOnce, retain: true)
+        } else {
+            print("Can't encode locationData : \(location)")
+        }
+
+       // _ = mqttClient?.publish(to: deviceTopic + "state", payload: ByteBuffer(string: "reset"), qos: .atLeastOnce, retain: true)
+    }
+
+    func updateHomeAssistant(device: Device) {
+        if homeassistantSettings.enabled == false || homeassistantSettings.endpoint.count == 0 || homeassistantSettings.token.count == 0 {
             return
         }
+
+        guard let latitude = device.latitude, let longitude = device.longitude else { return }
+        let id = device.identifier.uppercased()
+
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(
             configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        guard let URL = URL(string: ha_endpoint + "/api/services/device_tracker/see") else { return }
+        guard let URL = URL(string: homeassistantSettings.endpoint + "/api/services/device_tracker/see") else { return }
         var request = URLRequest(url: URL)
         request.httpMethod = "POST"
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer " + ha_token, forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer " + homeassistantSettings.token, forHTTPHeaderField: "Authorization")
 
         let dev_id = "findmy_" + id.replacingOccurrences(of: "-", with: "")
         var bodyObject: [String: Any] = [
@@ -250,11 +369,11 @@ class DevicesManager : ObservableObject {
             bodyObject["gps_accuracy"] = accuracy
         }
 
-        #if false
+#if false
         if let battery = device.battery {
             bodyObject["battery"] = battery
         }
-        #endif
+#endif
         request.httpBody = try! JSONSerialization.data(
             withJSONObject: bodyObject, options: [])
 
@@ -277,6 +396,14 @@ class DevicesManager : ObservableObject {
             })
         task.resume()
         session.finishTasksAndInvalidate()
+}
+
+    func notifyChange(device: Device) {
+
+        guard device.latitude != nil, device.longitude != nil else { return }
+
+        updateHomeAssistant(device: device)
+        updateMQTT(device: device)
 
     }
 
@@ -302,6 +429,11 @@ class DevicesManager : ObservableObject {
 
             code(record)
         }
+    }
+
+    func mqttSettingsDidChange() {
+        print("mqttSettingsDidChange")
+        self.mqttClient = nil
     }
 
     func loadDevices() {

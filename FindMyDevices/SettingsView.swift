@@ -11,6 +11,7 @@ struct SettingsView: View {
     private enum Tabs: Hashable {
         case general
         case homeassistant
+        case mqtt
     }
 
     var body: some View {
@@ -25,9 +26,14 @@ struct SettingsView: View {
                     Label("Home Assistant", image: "HALogo")
                     }
                 .tag(Tabs.homeassistant)
+            MQTTSettingsView()
+                .tabItem {
+                    Label("MQTT", image: "MQTTLogo")
+                }
+                .tag(Tabs.homeassistant)
         }
         .padding(20)
-        .frame(minWidth: 350, minHeight: 100)
+        .frame(minWidth: 300)
     }
 }
 

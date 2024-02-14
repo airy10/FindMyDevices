@@ -45,6 +45,10 @@ struct DeviceDetails: View {
                         Text("\(lat)")
                     }
                     HStack {
+                        Text("Latitude:").frame(width: 150, alignment: .trailing)
+                        Text("\(lat)")
+                    }
+                    HStack {
                         Text("Longitude:").frame(width: 150, alignment: .trailing)
                         Text("\(long)")
                     }

@@ -17,9 +17,11 @@
 		490532EB2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532EA2B73CF6500C8FE09 /* FindMyDevicesUITestsLaunchTests.swift */; };
 		490532F82B73CF8400C8FE09 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532F72B73CF8400C8FE09 /* Device.swift */; };
 		490532FA2B73D62300C8FE09 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490532F92B73D62300C8FE09 /* DevicesManager.swift */; };
+		494912062B7CD21B00A9F138 /* MQTTNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 494912052B7CD21B00A9F138 /* MQTTNIO */; };
 		49C8056C2B78E6F300552267 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056B2B78E6F300552267 /* SettingsView.swift */; };
 		49C8056E2B78E72C00552267 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */; };
 		49C805702B78E74D00552267 /* HomeAssistantSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */; };
+		49E558AE2B7CD9C100C0C70B /* MQTTSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E558AD2B7CD9C100C0C70B /* MQTTSettingsView.swift */; };
 		49FCF16B2B74F9EB00B78D76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCF16A2B74F9EB00B78D76 /* Extensions.swift */; };
 		49FCF16D2B7514DE00B78D76 /* DirectoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCF16C2B7514DE00B78D76 /* DirectoryMonitor.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,7 @@
 		49C8056B2B78E6F300552267 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssistantSettingsView.swift; sourceTree = "<group>"; };
+		49E558AD2B7CD9C100C0C70B /* MQTTSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTSettingsView.swift; sourceTree = "<group>"; };
 		49FCF16A2B74F9EB00B78D76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		49FCF16C2B7514DE00B78D76 /* DirectoryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494912062B7CD21B00A9F138 /* MQTTNIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +128,7 @@
 				49C8056B2B78E6F300552267 /* SettingsView.swift */,
 				49C8056D2B78E72C00552267 /* GeneralSettingsView.swift */,
 				49C8056F2B78E74D00552267 /* HomeAssistantSettingsView.swift */,
+				49E558AD2B7CD9C100C0C70B /* MQTTSettingsView.swift */,
 			);
 			path = FindMyDevices;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			);
 			name = FindMyDevices;
 			packageProductDependencies = (
+				494912052B7CD21B00A9F138 /* MQTTNIO */,
 			);
 			productName = FindMyDevices;
 			productReference = 490532C92B73CF6400C8FE09 /* FindMyDevices.app */;
@@ -244,6 +250,7 @@
 			);
 			mainGroup = 490532C02B73CF6400C8FE09;
 			packageReferences = (
+				494912042B7CD21B00A9F138 /* XCRemoteSwiftPackageReference "mqtt-nio" */,
 			);
 			productRefGroup = 490532CA2B73CF6400C8FE09 /* Products */;
 			projectDirPath = "";
@@ -294,6 +301,7 @@
 				490532FA2B73D62300C8FE09 /* DevicesManager.swift in Sources */,
 				490532CF2B73CF6400C8FE09 /* ContentView.swift in Sources */,
 				49FCF16D2B7514DE00B78D76 /* DirectoryMonitor.swift in Sources */,
+				49E558AE2B7CD9C100C0C70B /* MQTTSettingsView.swift in Sources */,
 				490532CD2B73CF6400C8FE09 /* FindMyDevicesApp.swift in Sources */,
 				49C805702B78E74D00552267 /* HomeAssistantSettingsView.swift in Sources */,
 				4902865F2B76691000FF191E /* DeviceDetails.swift in Sources */,
@@ -623,6 +631,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		494912042B7CD21B00A9F138 /* XCRemoteSwiftPackageReference "mqtt-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-server-community/mqtt-nio";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		494912052B7CD21B00A9F138 /* MQTTNIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 494912042B7CD21B00A9F138 /* XCRemoteSwiftPackageReference "mqtt-nio" */;
+			productName = MQTTNIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 490532C12B73CF6400C8FE09 /* Project object */;
 }

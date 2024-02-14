@@ -7,17 +7,23 @@
 
 import SwiftUI
 
-struct HomeAssistantSettingsView: View {
-
-    @AppStorage("homeassistant_enabled") private var trackerEnabled = false
+struct HomeAssistantSettings {
+    @AppStorage("homeassistant_enabled")  var enabled = false
     @AppStorage("homeassistant_endpoint") var endpoint: String = "http://homeassistant.local:8123"
     @AppStorage("homeassistant_token") var token: String = ""
+}
+
+struct HomeAssistantSettingsView: View {
+
+    @State
+    var settings = HomeAssistantSettings()
 
     var body: some View {
         VStack(alignment: .leading) {
-            Toggle("Enabled", isOn: $trackerEnabled)
-            TextField("http://homeassistant.local:8123", text: $endpoint)
-            TextField("<access token>", text: $token)
+            Toggle("Enabled", isOn: $settings.enabled)
+            TextField("http://homeassistant.local:8123", text: $settings.endpoint)
+                .textContentType(.URL)
+            TextField("<access token>", text: $settings.token)
         }
     }
 }
