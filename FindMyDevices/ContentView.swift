@@ -16,7 +16,7 @@ struct DeviceMarker:  MapContent {
         if let latitude = device.latitude, let longitude = device.longitude {
             let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 
-            Marker("\(device.label)", coordinate: location)
+            Marker(device.label, coordinate: location)
         }
     }
 }
@@ -69,8 +69,7 @@ struct ContentView: View {
 
                     VStack(alignment: .leading) {
                         List(devicesManager.devices, selection: $selection) { device in
-                            // DeviceLabel(device: device, selection: $selection)
-                            Text("\(device.label)")
+                            Text(device.label)
                                 .frame(width: geometry.size.width, alignment: Alignment.leading)
                                 .contentShape(Rectangle())
                                 .foregroundStyle(device == selection  ? AnyShapeStyle(.selection): AnyShapeStyle(.foreground))
@@ -118,8 +117,8 @@ struct ContentView: View {
                 }
             }
             .frame(minWidth: 200)
-            Map(interactionModes: .all) {
-                ForEach(devicesManager.devices) { device in
+            Map(interactionModes: .all, selection: $selection) {
+                ForEach(devicesManager.devices, id: \.self) { device in
                     if let _ = device.latitude, let _ = device.longitude {
                         DeviceMarker(device: device)
                             .tint(device == selection ? .red : .blue)
