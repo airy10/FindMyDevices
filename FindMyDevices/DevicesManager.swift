@@ -70,10 +70,8 @@ class DevicesManager : ObservableObject {
         self.loadDevices()
         disableNotification = false
         for device in devices {
-            if device.timestamp != nil {
-                print("\(device.id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
-                notifyChange(device: device)
-            }
+             notifyChange(device: device)
+             print("\(device.id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
         }
 
     }
@@ -219,7 +217,6 @@ class DevicesManager : ObservableObject {
             return
         }
 
-        guard let _ = device.latitude, let _ = device.longitude else { return }
         let id = device.identifier.uppercased()
         print("Location changed : \(id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
 
@@ -231,7 +228,6 @@ class DevicesManager : ObservableObject {
             return
         }
 
-        guard let latitude = device.latitude, let longitude = device.longitude else { return }
         let id = device.identifier.uppercased()
 
         if mqttSettings.server != mqttClient?.host ||
@@ -310,12 +306,15 @@ class DevicesManager : ObservableObject {
         }
 
         var location : [String: Any] = [
-            "longitude": longitude,
-            "latitude": latitude,
             "provider-url": "https://github.com/airy10/FindMyDevices",
             "provider": "FindMyDevices",
             "via_device": "FindMyDevices",
         ]
+        if let latitude = device.latitude, let longitude = device.longitude {
+            location["latitude"] = latitude
+            location["longitude"] = longitude
+        }
+
         if let accuracy = device.horizontalAccuracy {
             location["gps_accuracy"] = accuracy
         }
@@ -341,7 +340,6 @@ class DevicesManager : ObservableObject {
             return
         }
 
-        guard let latitude = device.latitude, let longitude = device.longitude else { return }
         let id = device.identifier.uppercased()
 
         let sessionConfig = URLSessionConfiguration.default
@@ -357,23 +355,23 @@ class DevicesManager : ObservableObject {
         let dev_id = "findmy_" + id.replacingOccurrences(of: "-", with: "")
         var bodyObject: [String: Any] = [
             "dev_id": dev_id,
-            "gps": [
-                latitude,
-                longitude,
-            ],
             "mac": "FINDMY_" + id.uppercased(),
             "host_name": "FindMyDevices",
         ]
-
+        if let latitude = device.latitude, let longitude = device.longitude {
+            bodyObject["gps"] = [
+                latitude,
+                longitude,
+            ]
+        }
         if let accuracy = device.horizontalAccuracy {
             bodyObject["gps_accuracy"] = accuracy
         }
 
-#if false
         if let battery = device.battery {
             bodyObject["battery"] = battery
         }
-#endif
+
         request.httpBody = try! JSONSerialization.data(
             withJSONObject: bodyObject, options: [])
 
@@ -399,8 +397,6 @@ class DevicesManager : ObservableObject {
 }
 
     func notifyChange(device: Device) {
-
-        guard device.latitude != nil, device.longitude != nil else { return }
 
         updateHomeAssistant(device: device)
         updateMQTT(device: device)

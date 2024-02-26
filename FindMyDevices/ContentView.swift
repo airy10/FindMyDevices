@@ -12,11 +12,22 @@ struct DeviceMarker:  MapContent {
     @ObservedObject
     var device : Device
 
+    let isSelected : Bool
+
     var body: some  MapContent {
+
         if let latitude = device.latitude, let longitude = device.longitude {
             let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 
+            if let accuracy = device.horizontalAccuracy {
+                MapCircle(center: location, radius: accuracy)
+                    .mapOverlayLevel(level: isSelected ? .aboveLabels : .aboveRoads)
+                    .foregroundStyle(.teal.opacity(isSelected ? 0.3 : 0.05))
+                    .stroke(.white, lineWidth: isSelected ? 2.0 : 0.5)
+            }
+
             Marker(device.label, coordinate: location)
+                .tint(isSelected ? .red : .blue)
         }
     }
 }
@@ -78,6 +89,9 @@ struct ContentView: View {
                                     selection = device
                                 }
                         }
+                        .listStyle(PlainListStyle())
+                        .listItemTint(Color.accentColor)
+
                         .onKeyPress(keys: [ .upArrow, .downArrow]) {
                             key in
 
@@ -92,8 +106,6 @@ struct ContentView: View {
 
                             return .handled
                         }
-                        .listStyle(PlainListStyle())
-                        .listItemTint(Color.accentColor)
 
                         // Hack because "onKeyPress" doesn't get down and up arrow keys on macOS
                         VStack {
@@ -120,8 +132,9 @@ struct ContentView: View {
             Map(interactionModes: .all, selection: $selection) {
                 ForEach(devicesManager.devices, id: \.self) { device in
                     if let _ = device.latitude, let _ = device.longitude {
-                        DeviceMarker(device: device)
-                            .tint(device == selection ? .red : .blue)
+
+                        let isSelected = (device == selection)
+                        DeviceMarker(device: device, isSelected: isSelected)
                     }
                 }
             }
