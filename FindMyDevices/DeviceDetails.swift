@@ -42,7 +42,7 @@ struct DeviceDetails: View {
                 if let time = device.timestamp?.formatted(), let lat = device.latitude, let long = device.longitude {
                     HStack {
                         Text("Time:").frame(width: 150, alignment: .trailing)
-                        Text("\(lat)")
+                        Text("\(time)")
                     }
                     HStack {
                         Text("Latitude:").frame(width: 150, alignment: .trailing)
