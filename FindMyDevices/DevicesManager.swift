@@ -69,11 +69,16 @@ class DevicesManager : ObservableObject {
     init() {
         self.loadDevices()
         disableNotification = false
+
         for device in devices {
-             notifyChange(device: device)
-             print("\(device.id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
+            print("\(device.id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
         }
 
+        Task {
+            for device in devices {
+                await notifyChange(device: device)
+            }
+        }
     }
 
     deinit {
@@ -133,7 +138,7 @@ class DevicesManager : ObservableObject {
         let url = url ??  DevicesManager.OwnedBeaconsDirURL
 
         processRecord(url: url) {
-            processOwnedBeacon($0)
+            self.processOwnedBeacon($0)
         }
     }
 
@@ -157,7 +162,7 @@ class DevicesManager : ObservableObject {
         let url = url ??  DevicesManager.BeaconProductInfoRecordDirURL
 
         processRecord(url: url) {
-            processBeaconProductInfoRecord($0)
+            self.processBeaconProductInfoRecord($0)
         }
     }
 
@@ -181,7 +186,7 @@ class DevicesManager : ObservableObject {
         let url = url ??  DevicesManager.BeaconNamingRecordDirURL
 
         processRecord(url: url) {
-            processBeaconNamingRecord($0)
+            self.processBeaconNamingRecord($0)
         }
     }
 
@@ -191,8 +196,8 @@ class DevicesManager : ObservableObject {
 
         guard let timestamp = record["timestamp"] as? Date else { return }
 
-        if let currentTimestamp = device.timestamp {
-            if timestamp.compare(currentTimestamp) == .orderedAscending {
+        if let currentDeviceTimestamp = device.timestamp {
+            if timestamp <= currentDeviceTimestamp {
                 return
             }
         }
@@ -208,8 +213,7 @@ class DevicesManager : ObservableObject {
         device.scanDate = scanDate
         device.timestamp = timestamp
 
-        locationChangedFor(device: device)
-
+        self.locationChangedFor(device: device)
     }
 
     func locationChangedFor(device: Device) {
@@ -220,10 +224,12 @@ class DevicesManager : ObservableObject {
         let id = device.identifier.uppercased()
         print("Location changed : \(id) : \(device.label) - \(device.timestamp?.formatted() ?? "")")
 
-        notifyChange(device: device)
+        Task {
+            await notifyChange(device: device)
+        }
     }
 
-    func updateMQTT(device: Device) {
+    func updateMQTT(device: Device) async {
         if mqttSettings.enabled == false || mqttSettings.server.count == 0 {
             return
         }
@@ -235,6 +241,7 @@ class DevicesManager : ObservableObject {
             mqttSettings.user != mqttClient?.configuration.userName ||
             mqttSettings.password != mqttClient?.configuration.password  {
 
+            try? mqttClient?.syncShutdownGracefully()
             mqttClient = nil
         }
 
@@ -247,22 +254,22 @@ class DevicesManager : ObservableObject {
                 configuration: MQTTClient.Configuration(userName: mqttSettings.user, password: mqttSettings.password)
             )
             if let client = mqttClient {
-                let status = client.connect()
-                status
-                    .whenSuccess {_ in
-                        print("Connected")
-                    }
-                status
-                    .whenFailure { error in
-                        print("Error : \(error)")
-                   }
                 do {
-                    _ = try status.wait()
+                    try await client.connect()
+                    print("Connected")
                 }
-                catch {
+                catch let error as MQTTError  {
+                    print("Error : \(error)")
+                    try? mqttClient?.syncShutdownGracefully()
+                    mqttClient = nil
                     return
                 }
-                return
+                catch {
+                    print("Unknown error")
+                    try? mqttClient?.syncShutdownGracefully()
+                    mqttClient = nil
+                    return
+                }
             } else {
                 print("Invalid client")
             }
@@ -300,7 +307,19 @@ class DevicesManager : ObservableObject {
             "unique_id": deviceId
         ]
         if let deviceConfigData = try? JSONSerialization.data(withJSONObject: deviceConfig, options: .withoutEscapingSlashes) {
-            let _ = mqttClient?.publish(to: topic, payload: ByteBuffer(data: deviceConfigData), qos: .atLeastOnce, retain: true)
+            do {
+                try await mqttClient?.publish(to: topic, payload: ByteBuffer(data: deviceConfigData), qos: .atLeastOnce, retain: true)
+            }
+            catch let error as MQTTError  {
+                print("Error : \(error)")
+                try? mqttClient?.syncShutdownGracefully()
+                mqttClient = nil
+            }
+            catch {
+                print("Unknown error")
+                try? mqttClient?.syncShutdownGracefully()
+                self.mqttClient = nil
+            }
         } else {
             print("Can't encode message : \(deviceConfig)")
         }
@@ -327,15 +346,26 @@ class DevicesManager : ObservableObject {
         }
 
         if let locationData = try? JSONSerialization.data(withJSONObject: location, options: .withoutEscapingSlashes) {
-            _ = mqttClient?.publish(to: deviceTopic + "attributes", payload: ByteBuffer(data: locationData), qos: .atLeastOnce, retain: true)
-        } else {
-            print("Can't encode locationData : \(location)")
+            do {
+                try await mqttClient?.publish(to: deviceTopic + "attributes", payload: ByteBuffer(data: locationData), qos: .atLeastOnce, retain: true)
+
+            }
+            catch let error as MQTTError  {
+                print("Error : \(error)")
+                try? mqttClient?.syncShutdownGracefully()
+                mqttClient = nil
+            }
+            catch {
+                print("Unknown error")
+                try? mqttClient?.syncShutdownGracefully()
+                mqttClient = nil
+            }
         }
 
        // _ = mqttClient?.publish(to: deviceTopic + "state", payload: ByteBuffer(string: "reset"), qos: .atLeastOnce, retain: true)
     }
 
-    func updateHomeAssistant(device: Device) {
+    func updateHomeAssistant(device: Device) async {
         if homeassistantSettings.enabled == false || homeassistantSettings.endpoint.count == 0 || homeassistantSettings.token.count == 0 {
             return
         }
@@ -353,53 +383,49 @@ class DevicesManager : ObservableObject {
         request.addValue("Bearer " + homeassistantSettings.token, forHTTPHeaderField: "Authorization")
 
         let dev_id = "findmy_" + id.replacingOccurrences(of: "-", with: "")
-        var bodyObject: [String: Any] = [
+        var attributes: [String: Any] = [
             "dev_id": dev_id,
             "mac": "FINDMY_" + id.uppercased(),
             "host_name": "FindMyDevices",
         ]
         if let latitude = device.latitude, let longitude = device.longitude {
-            bodyObject["gps"] = [
+            attributes["gps"] = [
                 latitude,
                 longitude,
             ]
         }
         if let accuracy = device.horizontalAccuracy {
-            bodyObject["gps_accuracy"] = accuracy
+            attributes["gps_accuracy"] = accuracy
         }
 
         if let battery = device.battery {
-            bodyObject["battery"] = battery
+            attributes["battery"] = battery
         }
 
-        request.httpBody = try! JSONSerialization.data(
-            withJSONObject: bodyObject, options: [])
+        let jsonData = try! JSONSerialization.data(
+            withJSONObject: attributes, options: [])
 
-        let task = session.dataTask(
-            with: request,
-            completionHandler: {
-                (data, response, error) in
-                if error == nil {
-                    let statusCode = (response as! HTTPURLResponse).statusCode
-                    if statusCode != 200 {
-                        print("[" + id + "] Data sent: HTTP \(statusCode)")
-                        //                debugPrint(String(data: data!, encoding: .utf8))
-                    }
-                } else {
-                    print(
-                        "[" + id
-                        + "] Data error: \(error!.localizedDescription)"
-                    )
+        request.httpBody = jsonData
+        do {
+            let (_, response) = try await session.data(
+                for: request
+            )
+
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode != 200  {
+                    print("[" + id + "] Data sent: HTTP \(httpResponse.statusCode)")
                 }
-            })
-        task.resume()
-        session.finishTasksAndInvalidate()
-}
+            }
+        }
+        catch {
+            print("[" + id + "] Data send error")
+        }
+    }
 
-    func notifyChange(device: Device) {
+    func notifyChange(device: Device) async {
 
-        updateHomeAssistant(device: device)
-        updateMQTT(device: device)
+        await updateHomeAssistant(device: device)
+        await updateMQTT(device: device)
 
     }
 
@@ -407,11 +433,11 @@ class DevicesManager : ObservableObject {
         let url = url ??  DevicesManager.BeaconEstimatedLocationDirURL
 
         processRecord(url: url) {
-            processBeaconEstimatedLocation($0)
+            self.processBeaconEstimatedLocation($0)
         }
     }
 
-    func processRecord(url: URL, code: ([String: Any]) -> Void) {
+    func processRecord(url: URL, code: @escaping ([String: Any]) -> Void) {
         guard let decryptKey = self.key else { return }
 
         if url.isDirectory {
@@ -423,12 +449,20 @@ class DevicesManager : ObservableObject {
         } else {
             guard let record = try? decryptRecordFile(fileURL: url, key: decryptKey) else { return }
 
-            code(record)
+            // Ensure the change is done in the main thread as this is observed by the UI
+            if Thread.isMainThread {
+                code(record)
+            } else {
+                DispatchQueue.main.async {
+                    code(record)
+                }
+            }
         }
     }
 
     func mqttSettingsDidChange() {
         print("mqttSettingsDidChange")
+        try? mqttClient?.syncShutdownGracefully()
         self.mqttClient = nil
     }
 
@@ -438,12 +472,11 @@ class DevicesManager : ObservableObject {
         }
         guard self.key != nil else { return }
 
-        dirMonitor = DirectoryMonitor(dir: DevicesManager.RootRecordDirURL, queue: DispatchQueue.main) {
+        dirMonitor = DirectoryMonitor(dir: DevicesManager.RootRecordDirURL, queue: DispatchQueue.global(qos: .default)) {
             self.processFileChange(url: $0, flags: $1)
         }
 
         _ = dirMonitor?.start()
-
 
         processOwnedBeacon()
         processBeaconNamingRecord()

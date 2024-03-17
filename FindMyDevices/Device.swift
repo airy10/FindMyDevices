@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-class Device :  CustomStringConvertible, Hashable, Identifiable, ObservableObject {
+/// FindMy device descripton
+class Device :  CustomStringConvertible,
+                    Hashable, Identifiable, ObservableObject {
     static func == (lhs: Device, rhs: Device) -> Bool {
         return lhs.identifier == rhs.identifier
     }

@@ -66,7 +66,7 @@ class DirectoryMonitor {
                                                &context,
                                                [self.dir.path as NSString] as NSArray,
                                                UInt64(kFSEventStreamEventIdSinceNow),
-                                               1.0,
+                                               5.0,
                                                FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamEventFlagItemIsFile | kFSEventStreamEventFlagItemModified | kFSEventStreamEventFlagItemCreated)
         ) else {
             return false
